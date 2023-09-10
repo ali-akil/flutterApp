@@ -1,0 +1,200 @@
+import 'package:flutter/material.dart';
+
+
+
+class Massenger extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0.2,
+          backgroundColor: Colors.white,
+          titleSpacing: 20,
+          title: Row(
+            children: [
+              CircleAvatar(
+                radius: 25,
+                backgroundColor: Colors.black,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                "Chats",
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
+          actions: [
+            CircleAvatar(
+                radius: 21,
+                backgroundColor: Colors.blue,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.camera_alt,
+                  ),
+                  color: Colors.white,
+                )),
+            SizedBox(
+              width: 16,
+            ),
+            CircleAvatar(
+              radius: 21,
+              backgroundColor: Colors.blue,
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.edit,
+                ),
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              width: 16,
+            ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.fromLTRB(15, 0, 10, 15),
+              decoration: BoxDecoration(
+                  color: Colors.grey[350],
+                  borderRadius: BorderRadius.circular(50)),
+              child: Row(
+                children: [
+                  Icon(Icons.search),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "Search",
+                    style: TextStyle(fontSize: 15),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: 120,
+              child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => buildStoryItem(),
+                  itemCount: 10,
+                  separatorBuilder: (context, index) => SizedBox(
+                        width: 7,
+                      )),
+            ),
+            Expanded(
+              child: Container(
+                height: double.infinity,
+                child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) => builddChateItem(),
+                    separatorBuilder: (context, index) => SizedBox(
+                          height: 7,
+                        ),
+                    itemCount: 10),
+              ),
+            )
+          ]),
+        ),
+      )
+    ;
+  }
+
+  Widget builddChateItem() => Row(
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.bottomEnd,
+            children: [
+              CircleAvatar(radius: 35, backgroundColor: Colors.black),
+              Padding(
+                padding: const EdgeInsetsDirectional.only(bottom: 6, end: 2),
+                child: CircleAvatar(
+                  radius: 8,
+                  backgroundColor: Colors.green,
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "EN.ALI HASSAN Akil",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Text(
+                      "hello my name is ALi , I am engineer ",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    )),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 10,
+                      height: 10,
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.blue),
+                    ),
+                    Text(
+                      "02:00 pm",
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      );
+
+  Widget buildStoryItem() => Container(
+        width: 60,
+        child: Column(
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              children: [
+                CircleAvatar(radius: 35, backgroundColor: Colors.yellow),
+                Padding(
+                  padding: const EdgeInsetsDirectional.only(bottom: 6, end: 2),
+                  child: CircleAvatar(
+                    radius: 8,
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "En.Ali hassan AKil",
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            )
+          ],
+        ),
+      );
+}
